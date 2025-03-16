@@ -4,3 +4,4 @@ managed_components
 build
 cmake-build-debug
 cmake-build-release
+.DS_Store

@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <esp_log.h>
 #include <arch/sys_arch.h>
-#include <driver/gpio.h>
 #include <driver/i2c_master.h>
 
 #include "bsp.h"
@@ -52,10 +51,7 @@ uint16_t touch_y[1];
 uint16_t touch_strength[1];
 uint8_t touch_cnt = 0;
 void tp_interrupt(esp_lcd_touch_handle_t tp) {
-    ESP_LOGI(TAG, "touch interrupt");
-    if  (esp_lcd_touch_get_coordinates(tp, touch_x, touch_y, touch_strength, &touch_cnt, 1)) {
-        ESP_LOGI(TAG, "touch coordinates: %d, %d", touch_x[0], touch_y[0]);
-    }
+    // Handle interrupts
 }
 
 void app_main(void)
@@ -63,6 +59,15 @@ void app_main(void)
     ESP_LOGI(TAG, "Startup ESP32 2432S032C_I");
     ESP_ERROR_CHECK(backlight_init());
     ESP_ERROR_CHECK(backlight_set(0));
+
+    const gpio_config_t led_gpio_config = {
+        .mode = GPIO_MODE_OUTPUT,
+        .pin_bit_mask = 1ULL << GPIO_LED_R | 1ULL << GPIO_LED_G | 1ULL << GPIO_LED_B
+    };
+    ESP_ERROR_CHECK(gpio_config(&led_gpio_config));
+    ESP_ERROR_CHECK(gpio_set_level(GPIO_LED_R, 1));
+    ESP_ERROR_CHECK(gpio_set_level(GPIO_LED_G, 1));
+    ESP_ERROR_CHECK(gpio_set_level(GPIO_LED_B, 1));
 
     spi_bus_config_t buscfg = {
         .sclk_io_num = GPIO_TFT_SPI_SCK,

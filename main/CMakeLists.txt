@@ -7,9 +7,8 @@
 idf_component_register(
         SRCS
           "esp32-2432S032C_I-base.c"
-          "pretty_effect.c"
-          "decode_image.c"
-        INCLUDE_DIRS
+          "openart-image_320x240.c"
+          "ui.c"
           "."
         EMBED_FILES
           "image.jpg"

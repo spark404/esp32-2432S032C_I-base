@@ -16,7 +16,7 @@
 
 #define GPIO_TP_SCL       32
 #define GPIO_TP_SDA       33
-#define GPIO_TP_INT       12
+#define GPIO_TP_INT       GPIO_NUM_NC // Not connected
 #define GPIO_TP_RST       25
 
 #define PARALLEL_LINES     1

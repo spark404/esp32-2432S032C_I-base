@@ -14,14 +14,20 @@ Board components
    * IO13 - SDI
    * IO12 - TFT RST
    * IO27 - LED (Backlight)
- * Capacitve touch  - GT911 chip
-   * IO21 - CTP_INT
+ * Capacitive touch  - GT911 chip
+   * NC   - CTP_INT // Not Connected, bridge R25 to IO21
    * IO25 - CTP_RST
    * IO32 - CTP_SCL
-   * IO33 - STP_SDA
+   * IO33 - CTP_SDA
  * Amplifier - MD8002A
    * IO26 - AUDIO IN - (unbalanced)
  * RGB Led
-   * IO17
-   * IO4
-   * IO16
+   * IO4   - LED_K_R
+   * IO17  - LED_K_G
+   * IO16  - LED_K_B
+ * Light Sensor
+   * ??
+ * Extension connector A
+   * ??
+ * Extension connector B
+   * ??
